@@ -115,7 +115,18 @@ router.put('/:id', (req, res) => {
     });
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', async (req, res) => {
+  try{
+    const tagData= await Product.destroy(
+      {
+        where: {
+          id: req.params.id
+        },
+      });
+      res.status(200).json(tagData);
+  }catch (err) {
+    res.status(400).json(err);
+  }
   // delete one product by its `id` value
 });
 

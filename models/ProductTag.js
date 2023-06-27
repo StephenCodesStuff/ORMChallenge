@@ -14,18 +14,22 @@ ProductTag.init(
     },
     product_id: {
       type: DataTypes.INTEGER,
+      allowNull: true,
       references: {
         model: 'product',
         key: 'id',
-        unique: false
+        unique: false,
+        onUpdate: 'CASCADE'
       }
     },
     tag_id: {
       type: DataTypes.INTEGER,
+      allowNull: true,
       references: {
         model: 'tag',
         key: 'id',
-        unique: false
+        unique: false,
+        onUpdate: 'CASCADE'
       }
     }
   },
